@@ -1,0 +1,10 @@
+database:
+  dbName: quorum-challenge
+  host: localhost
+  password: password
+  port: 5432
+  user: postgres
+  enableSSL: true
+service:
+  port: 8080
+  ginReleaseMode: false

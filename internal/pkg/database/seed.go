@@ -11,5 +11,5 @@ func Seed() error {
 		return err
 	}
 
-	return nil
+	return tx.Commit().Error
 }

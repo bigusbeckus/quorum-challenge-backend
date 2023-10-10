@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/bigusbeckus/quorum-challenge-backend/internal/pkg/config"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -16,6 +17,7 @@ func StartServer() {
 	}
 
 	router := gin.Default()
+	router.Use(cors.Default())
 	router.SetTrustedProxies(nil)
 	SetupRoutes(router)
 

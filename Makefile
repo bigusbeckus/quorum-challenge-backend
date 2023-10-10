@@ -8,6 +8,11 @@ fmtcheck:
 staticcheck:
 	"$(CURDIR)/scripts/staticcheck.sh"
 
+loadconfig:
+	"$(CURDIR)/scripts/loadconfig.sh"
+
+deploy: loadconfig build
+
 build:
 	"$(CURDIR)/scripts/build.sh" -o $(OUTFILE)
 

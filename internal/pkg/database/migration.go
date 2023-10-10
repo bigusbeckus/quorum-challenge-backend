@@ -7,9 +7,7 @@ import (
 func RunMigrations() error {
 	db := Connect()
 
-	if err := db.AutoMigrate(&models.Brand{}); err != nil {
-		return err
-	}
+	db.AutoMigrate(&models.Brand{})
 
 	return nil
 }

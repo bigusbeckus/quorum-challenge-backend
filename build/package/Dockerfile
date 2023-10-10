@@ -6,7 +6,7 @@ RUN apt-get upgrade -y
 RUN apt-get install -y git curl make
 
 # Download go
-RUN curl -O https://go.dev/dl/go1.21.3.linux-amd64.tar.gz
+RUN curl -LO https://go.dev/dl/go1.21.3.linux-amd64.tar.gz
 
 # Extract go
 RUN tar -xvf go1.21.3.linux-amd64.tar.gz

@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  quorum_challenge_backend:
+    container_name: quorum-challenge-backend
+    network_mode: host
+    build:
+      context: ../
+      dockerfile: ./build/package/Dockerfile
+    restart: always

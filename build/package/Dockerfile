@@ -1,9 +1,9 @@
 FROM ubuntu:latest
 
 # Install dependencies
-RUN apt update -y
-RUN apt upgrade -y
-RUN apt install -y git curl make
+RUN apt-get update -y
+RUN apt-get upgrade -y
+RUN apt-get install -y git curl make
 
 # Download go
 RUN curl -O https://go.dev/dl/go1.21.3.linux-amd64.tar.gz

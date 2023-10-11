@@ -24,8 +24,8 @@ func Initialize() error {
 
 	var err error
 	c := &gorm.Config{
-		// Logger: logger.Default.LogMode(logger.Info),
-		Logger: logger.Default.LogMode(logger.Error),
+		Logger: logger.Default.LogMode(logger.Info),
+		// Logger: logger.Default.LogMode(logger.Error),
 		// Logger: logger.Default.LogMode(logger.Silent),
 	}
 

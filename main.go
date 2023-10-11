@@ -34,6 +34,13 @@ func SetupDB() {
 	}
 	log.Println("Database migrations successful")
 
+	// Run database extensions
+	log.Println("Database extensions started")
+	if err := database.RunExtensions(); err != nil {
+		log.Fatalf("\n%v\n", err.Error())
+	}
+	log.Println("Database extensions successful")
+
 	// Seed data
 	log.Println("Started seeding database")
 	if err := database.Seed(); err != nil {

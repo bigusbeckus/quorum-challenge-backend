@@ -97,7 +97,7 @@ func search(tokens []string) ([]BrandResult, error) {
 
 func getBrandResults(brands []*models.Brand, tokens []string) []BrandResult {
 	results := make([]BrandResult, 0, len(brands))
-	matchScoreTreshold := float32(0.05)
+	matchScoreTreshold := float32(0.51)
 
 	for _, brand := range brands {
 		if brand == nil {
@@ -132,26 +132,36 @@ func getBrandResults(brands []*models.Brand, tokens []string) []BrandResult {
 // Arbitrary match scoring for token occurrence
 func getMatchScore(brand models.Brand, tokens []string) float32 {
 	var score float32
+
+	categoryTokens := strings.Fields(string(brand.Category))
+	locationTokens := strings.Fields(string(brand.Location))
+
+	perfectScore := float32(len(tokens))
+
 	for _, token := range tokens {
 		if strings.Contains(brand.Name, token) {
-			score += 1
+			score += 0.03 * perfectScore
 		}
 
 		if strings.Contains(brand.Product, token) {
-			score += 1
+			score += 0.03 * perfectScore
 		}
 
-		if strings.Contains(string(brand.Category), token) {
-			score += 3
+		for _, categoryToken := range categoryTokens {
+			if categoryToken == token {
+				score += (0.47 * perfectScore) / float32(len(categoryTokens))
+			}
 		}
 
-		if strings.Contains(string(brand.Location), token) {
-			score += 3
+		for _, locationToken := range locationTokens {
+			if locationToken == token {
+				score += (0.47 * perfectScore) / float32(len(locationTokens))
+			}
 		}
+
 	}
 
-	perfectScore := 6 * len(tokens)
-	score = score / float32(perfectScore)
+	score = score / perfectScore
 
 	return score
 }

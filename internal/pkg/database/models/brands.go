@@ -24,6 +24,22 @@ const (
 	BrandLocationMiami      BrandLocation = "miami"
 )
 
+var AllBrandLocations = []BrandLocation{
+	BrandLocationLosAngeles,
+	BrandLocationNewYork,
+	BrandLocationSeattle,
+	BrandLocationDallas,
+	BrandLocationMiami,
+}
+
+var AllBrandCategories = []BrandCategory{
+	BrandCategoryAppliances,
+	BrandCategoryCoffee,
+	BrandCategoryFood,
+	BrandCategoryToys,
+	BrandCategoryFurniture,
+}
+
 type Brand struct {
 	gorm.Model
 	ID            string `gorm:"primaryKey;type:uuid;default:gen_random_uuid()"`
@@ -146,6 +162,20 @@ var brands = []Brand{
 		Product:       "Dolls",
 		Category:      BrandCategoryToys,
 		Location:      BrandLocationDallas,
+		ShopifyRating: 4.3,
+	},
+	{
+		Name:          "Lego",
+		Product:       "Puzzle",
+		Category:      BrandCategoryToys,
+		Location:      BrandLocationLosAngeles,
+		ShopifyRating: 4.1,
+	},
+	{
+		Name:          "Monopoly",
+		Product:       "Puzzle",
+		Category:      BrandCategoryToys,
+		Location:      BrandLocationLosAngeles,
 		ShopifyRating: 4.3,
 	},
 	{

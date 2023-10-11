@@ -36,7 +36,8 @@ func SearchHandler(c *gin.Context) {
 		return
 	}
 
-	uniqueWords := getWords(cleanQuery)
+	lowerQuery := strings.ToLower(cleanQuery)
+	uniqueWords := getWords(lowerQuery)
 	locations := findMatches(uniqueWords, models.AllBrandLocations)
 	categories := findMatches(uniqueWords, models.AllBrandCategories)
 	unmatchedTokens := getUnmatched(uniqueWords, append(locations, categories...))
@@ -45,6 +46,7 @@ func SearchHandler(c *gin.Context) {
 
 	log.Println("query:", q)
 	log.Println("cleanQuery:", cleanQuery)
+	log.Println("lowerQuery:", lowerQuery)
 	log.Println("uniqueWords:", uniqueWords)
 	log.Println("locations:", locations)
 	log.Println("categories:", categories)
